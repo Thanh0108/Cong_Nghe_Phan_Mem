@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chi tiết sản phẩm | FastFood</title>
+
+  <!-- Bootstrap 5 -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+
+  <!-- Bootstrap Icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+  />
+
+  <style>
+    :root {
+      --primary-color: #ff5a1f;
+      --secondary-color: #e53935;
+      --light-bg: #fff8f5;
+      --dark-color: #222;
+    }
+
+    body {
+      background-color: #fffdfc;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #444;
+    }
+
+    .top-navbar {
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+    }
+
+    .brand-logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #fff !important;
+    }
+
+    .brand-logo span {
+      color: #ffe082;
+    }
+
+    .cart-btn {
+      position: relative;
+      border-radius: 50px;
+    }
+
+    .cart-count {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #ffd54f;
+      color: #000;
+      font-size: 12px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .detail-card {
+      border: none;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    .product-main-image {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      border-radius: 24px;
+    }
+
+    .category-badge {
+      background: #fff0e8;
+      color: var(--secondary-color);
+      border: 1px solid #ffd4c4;
+      font-weight: 700;
+    }
+
+    .price-text {
+      color: var(--secondary-color);
+      font-size: 1.8rem;
+      font-weight: 800;
+    }
+
+    .option-box,
+    .summary-box {
+      background: var(--light-bg);
+      border-radius: 18px;
+      padding: 18px;
+      border: 1px solid #ffe0d6;
+    }
+
+    .quantity-box {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid #ddd;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .quantity-box button {
+      width: 44px;
+      height: 44px;
+      border: none;
+      background: #fff;
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+
+    .quantity-box input {
+      width: 70px;
+      height: 44px;
+      border: none;
+      text-align: center;
+      outline: none;
+    }
+
+    .btn-main {
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+      border: none;
+      color: #fff;
+      font-weight: 700;
+      border-radius: 999px;
+      padding: 12px 24px;
+    }
+
+    .btn-main:hover {
+      opacity: 0.95;
+      color: #fff;
+    }
+
+    @media (max-width: 768px) {
+      .product-main-image {
+        height: 320px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <nav class="navbar navbar-expand-lg top-navbar sticky-top">
+    <div class="container py-2">
+      <a class="navbar-brand brand-logo" href="index.html">
+        <i class="bi bi-bag-heart-fill me-2"></i>Fast<span>Food</span>
+      </a>
+
+      <div class="d-flex align-items-center gap-2">
+        <a href="index.html" class="btn btn-outline-light rounded-pill px-3">
+          <i class="bi bi-house-door-fill me-1"></i> Trang chủ
+        </a>
+
+        <a href="cart.html" class="btn btn-light cart-btn px-3">
+          <i class="bi bi-cart3 me-1"></i> Giỏ hàng
+          <span class="cart-count" data-cart-count>0</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Nội dung chi tiết sản phẩm -->
+  <section class="py-5">
+    <div class="container">
+      <div id="productDetailContainer" class="detail-card bg-white p-4 p-lg-5">
+        <!-- Nội dung sẽ render bằng JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- JS dùng chung -->
+  <script src="assets/store.js"></script>
+
+  <script>
+    /* =========================================================
+       product-detail.html
+       - Đọc id sản phẩm từ URL
+       - Hiển thị thông tin chi tiết
+       - Chọn số lượng, chọn option thêm
+       - Thêm vào giỏ bằng Local Storage
+    ========================================================== */
+    document.addEventListener("DOMContentLoaded", () => {
+      const params = new URLSearchParams(window.location.search);
+      const productId = Number(params.get("id")) || 1;
+      const product = FastFoodStore.getProductById(productId);
+      const defaultOptions = FastFoodStore.getDefaultOptions();
+      const container = document.getElementById("productDetailContainer");
+
+      if (!product) {
+        container.innerHTML = `
+          <div class="alert alert-danger rounded-4">
+            Không tìm thấy sản phẩm. Vui lòng quay lại <a href="index.html">trang chủ</a>.
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = `
+        <div class="row g-4 align-items-start">
+          <div class="col-lg-6">
+            <img
+              src="${product.image}"
+              alt="${product.name}"
+              class="product-main-image"
+            />
+          </div>
+
+          <div class="col-lg-6">
+            <span class="badge category-badge px-3 py-2 mb-3">${product.category}</span>
+
+            <h1 class="fw-bold mb-3">${product.name}</h1>
+            <p class="price-text mb-3">${FastFoodStore.formatPrice(product.price)}</p>
+
+            <p class="mb-4">
+              ${product.description}
+            </p>
+
+            <!-- Khu vực tùy chọn thêm -->
+            <div class="option-box mb-4">
+              <h5 class="fw-bold mb-3">Tùy chọn thêm</h5>
+
+              ${defaultOptions.map((option) => `
+                <div class="form-check mb-2">
+                  <input
+                    class="form-check-input extra-option"
+                    type="checkbox"
+                    value="${option.id}"
+                    id="${option.id}"
+                    data-label="${option.label}"
+                    data-price="${option.price}"
+                  />
+                  <label class="form-check-label" for="${option.id}">
+                    ${option.label} (+${FastFoodStore.formatPrice(option.price)})
+                  </label>
+                </div>
+              `).join("")}
+            </div>
+
+            <!-- Chọn số lượng -->
+            <div class="mb-4">
+              <label class="form-label fw-bold d-block">Số lượng</label>
+              <div class="quantity-box">
+                <button type="button" id="decreaseQty">-</button>
+                <input type="number" id="quantityInput" min="1" value="1" />
+                <button type="button" id="increaseQty">+</button>
+              </div>
+            </div>
+
+            <!-- Tóm tắt tạm tính -->
+            <div class="summary-box mb-4">
+              <div class="d-flex justify-content-between mb-2">
+                <span>Giá cơ bản:</span>
+                <span>${FastFoodStore.formatPrice(product.price)}</span>
+              </div>
+              <div class="d-flex justify-content-between mb-2">
+                <span>Phụ phí tùy chọn:</span>
+                <span id="extraCostText">${FastFoodStore.formatPrice(0)}</span>
+              </div>
+              <hr />
+              <div class="d-flex justify-content-between fw-bold fs-5">
+                <span>Tạm tính:</span>
+                <span id="previewTotal">${FastFoodStore.formatPrice(product.price)}</span>
+              </div>
+            </div>
+
+            <!-- Nút thao tác -->
+            <div class="d-flex flex-wrap gap-2">
+              <button class="btn btn-main" id="addToCartBtn">
+                <i class="bi bi-cart-plus-fill me-2"></i>Thêm vào giỏ
+              </button>
+
+              <a href="cart.html" class="btn btn-outline-danger rounded-pill px-4">
+                Xem giỏ hàng
+              </a>
+            </div>
+
+            <!-- Thông báo -->
+            <div id="messageBox" class="mt-3"></div>
+          </div>
+        </div>
+      `;
+
+      const quantityInput = document.getElementById("quantityInput");
+      const decreaseBtn = document.getElementById("decreaseQty");
+      const increaseBtn = document.getElementById("increaseQty");
+      const optionInputs = document.querySelectorAll(".extra-option");
+      const extraCostText = document.getElementById("extraCostText");
+      const previewTotal = document.getElementById("previewTotal");
+      const addToCartBtn = document.getElementById("addToCartBtn");
+      const messageBox = document.getElementById("messageBox");
+
+      /* -------------------------------------------------------
+         Lấy các option đang được chọn
+      ------------------------------------------------------- */
+      function getSelectedOptions() {
+        return [...optionInputs]
+          .filter((input) => input.checked)
+          .map((input) => ({
+            id: input.value,
+            label: input.dataset.label,
+            price: Number(input.dataset.price)
+          }));
+      }
+
+      /* -------------------------------------------------------
+         Cập nhật phần tạm tính theo số lượng và option
+      ------------------------------------------------------- */
+      function updatePreviewPrice() {
+        const quantity = Math.max(1, Number(quantityInput.value) || 1);
+        quantityInput.value = quantity;
+
+        const selectedOptions = getSelectedOptions();
+        const extraCost = FastFoodStore.getOptionsTotal(selectedOptions);
+        const unitPrice = product.price + extraCost;
+        const totalPrice = unitPrice * quantity;
+
+        extraCostText.textContent = FastFoodStore.formatPrice(extraCost);
+        previewTotal.textContent = FastFoodStore.formatPrice(totalPrice);
+      }
+
+      decreaseBtn.addEventListener("click", () => {
+        const currentValue = Math.max(1, Number(quantityInput.value) || 1);
+        if (currentValue > 1) {
+          quantityInput.value = currentValue - 1;
+          updatePreviewPrice();
+        }
+      });
+
+      increaseBtn.addEventListener("click", () => {
+        const currentValue = Math.max(1, Number(quantityInput.value) || 1);
+        quantityInput.value = currentValue + 1;
+        updatePreviewPrice();
+      });
+
+      quantityInput.addEventListener("input", updatePreviewPrice);
+
+      optionInputs.forEach((input) => {
+        input.addEventListener("change", updatePreviewPrice);
+      });
+
+      /* -------------------------------------------------------
+         Thêm sản phẩm vào Local Storage
+      ------------------------------------------------------- */
+      addToCartBtn.addEventListener("click", () => {
+        const quantity = Math.max(1, Number(quantityInput.value) || 1);
+        const selectedOptions = getSelectedOptions();
+
+        FastFoodStore.addToCart({
+          product,
+          quantity,
+          selectedOptions
+        });
+
+        messageBox.innerHTML = `
+          <div class="alert alert-success rounded-4">
+            Đã thêm <strong>${product.name}</strong> vào giỏ hàng.
+            <a href="cart.html" class="alert-link">Xem giỏ hàng</a>
+          </div>
+        `;
+
+        /* Reset form sau khi thêm */
+        quantityInput.value = 1;
+        optionInputs.forEach((input) => (input.checked = false));
+        updatePreviewPrice();
+      });
+
+      updatePreviewPrice();
+    });
+  </script>
+</body>
+</html>
