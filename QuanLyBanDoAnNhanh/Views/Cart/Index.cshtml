@@ -1,0 +1,121 @@
+@model List<QuanLyBanDoAnNhanh.Models.CartItem>
+
+@{
+    ViewData["Title"] = "Giỏ hàng";
+}
+
+<div class="container py-5">
+    <div class="row">
+        <div class="col-lg-8 mb-4">
+            <div class="card border-0 shadow-sm rounded-lg">
+                <div class="card-header bg-white py-3 border-0">
+                    <h4 class="fw-bold mb-0"><i class="fas fa-shopping-cart me-2 text-orange"></i>Giỏ hàng (@Model.Sum(i => i.Quantity) món)</h4>
+                </div>
+                <div class="card-body p-0">
+                    @if (Model.Any())
+                    {
+                        <div class="table-responsive">
+                            <table class="table align-middle mb-0">
+                                <thead class="bg-light">
+                                    <tr>
+                                        <th class="ps-4">Sản phẩm</th>
+                                        <th>Đơn giá</th>
+                                        <th style="width: 120px;">Số lượng</th>
+                                        <th>Thành tiền</th>
+                                        <th class="text-end pe-4"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td class="ps-4">
+                                                <div class="d-flex align-items-center">
+                                                    <span class="fw-bold text-dark">@item.Name</span>
+                                                </div>
+                                            </td>
+                                            <td>@item.Price.ToString("N0")đ</td>
+                                            <td>
+                                                <span class="badge bg-light text-dark border px-3 py-2">@item.Quantity</span>
+                                            </td>
+                                            <td class="text-orange fw-bold">@item.Total.ToString("N0")đ</td>
+                                            <td class="text-end pe-4">
+                                                <a asp-action="RemoveFromCart" asp-route-id="@item.ProductId" class="btn btn-sm btn-outline-danger border-0 rounded-circle">
+                                                    <i class="fas fa-times"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="text-center py-5">
+                            <i class="fas fa-shopping-basket fa-4x text-muted mb-3"></i>
+                            <h5 class="text-muted">Giỏ hàng của bạn đang trống</h5>
+                            <a asp-controller="Home" asp-action="Index" class="btn btn-orange mt-3 rounded-pill px-4">Tiếp tục mua sắm</a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        @if (Model.Any())
+        {
+        <div class="col-lg-4">
+                <div class="card border-0 shadow-sm rounded-lg mb-4">
+                    <div class="card-body p-4">
+                        <h5 class="fw-bold mb-4"><i class="fas fa-receipt me-2 text-orange"></i>Tóm tắt đơn hàng</h5>
+
+                        @foreach (var item in Model)
+                        {
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="text-muted">@item.Name x@item.Quantity</span>
+                                <span class="fw-bold">@item.Total.ToString("N0")đ</span>
+                            </div>
+                        }
+
+                        <hr class="my-3">
+
+                        <div class="d-flex justify-content-between mb-2">
+                            <span class="text-muted">Tạm tính:</span>
+                            <span class="fw-bold">@Model.Sum(x => x.Total).ToString("N0")đ</span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-4">
+                            <span class="text-muted">Phí giao hàng:</span>
+                            <span class="text-success fw-bold">Miễn phí</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h5 class="fw-bold mb-0">Tổng cộng:</h5>
+                            <h4 class="text-orange fw-bold mb-0">@Model.Sum(x => x.Total).ToString("N0")đ</h4>
+                        </div>
+
+                        <a asp-action="Checkout" class="btn btn-orange btn-lg w-100 rounded-pill fw-bold shadow-orange py-3">
+                            <i class="fas fa-credit-card me-2"></i>TIẾN HÀNH THANH TOÁN
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="p-3 bg-soft-orange rounded-lg d-flex align-items-center">
+                    <i class="fas fa-shield-alt text-orange me-3 fs-3"></i>
+                    <div>
+                        <p class="small fw-bold mb-0">Cam kết an toàn</p>
+                        <p class="small text-muted mb-0">Thực phẩm luôn tươi ngon và nóng hổi khi đến tay bạn.</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<style>
+    .rounded-lg { border-radius: 1rem; }
+    .bg-soft-orange { background-color: rgba(255, 94, 0, 0.1); }
+    .text-orange { color: #ff5e00; }
+    .btn-orange { background-color: #ff5e00; color: white; }
+    .btn-orange:hover { background-color: #e65500; color: white; }
+    .shadow-orange { box-shadow: 0 10px 20px rgba(255, 94, 0, 0.2); }
+    .form-control:focus { border-color: #ff5e00; box-shadow: 0 0 0 0.2rem rgba(255, 94, 0, 0.25); }
+</style>

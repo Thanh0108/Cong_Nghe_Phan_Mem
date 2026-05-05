@@ -1,0 +1,94 @@
+@model QuanLyBanDoAnNhanh.Models.User
+@{
+    ViewData["Title"] = "Tài khoản của tôi";
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
+                <!-- Header -->
+                <div class="card-header bg-gradient-orange text-white py-4">
+                    <div class="d-flex align-items-center">
+                        <div class="profile-avatar me-3">
+                            <i class="fas fa-user-circle fa-4x"></i>
+                        </div>
+                        <div>
+                            <h3 class="fw-bold mb-1">@Model.FullName</h3>
+                            <p class="mb-0 opacity-75"><i class="fas fa-envelope me-1"></i> @Model.Email</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body p-4">
+                    <h5 class="fw-bold mb-4"><i class="fas fa-info-circle text-orange me-2"></i>Thông tin tài khoản</h5>
+                    
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="info-item p-3 rounded-3 bg-light">
+                                <small class="text-muted d-block mb-1">Họ và tên</small>
+                                <span class="fw-semibold"><i class="fas fa-user text-orange me-2"></i>@Model.FullName</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="info-item p-3 rounded-3 bg-light">
+                                <small class="text-muted d-block mb-1">Email</small>
+                                <span class="fw-semibold"><i class="fas fa-envelope text-orange me-2"></i>@Model.Email</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="info-item p-3 rounded-3 bg-light">
+                                <small class="text-muted d-block mb-1">Số điện thoại</small>
+                                <span class="fw-semibold"><i class="fas fa-phone text-orange me-2"></i>@Model.Phone</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="info-item p-3 rounded-3 bg-light">
+                                <small class="text-muted d-block mb-1">Địa chỉ</small>
+                                <span class="fw-semibold"><i class="fas fa-map-marker-alt text-orange me-2"></i>@(Model.Address ?? "Chưa cập nhật")</span>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="info-item p-3 rounded-3 bg-light">
+                                <small class="text-muted d-block mb-1">Ngày tham gia</small>
+                                <span class="fw-semibold"><i class="fas fa-calendar text-orange me-2"></i>@Model.CreatedAt.ToString("dd/MM/yyyy HH:mm")</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 d-flex gap-2">
+                        <a asp-controller="Home" asp-action="Index" class="btn btn-orange text-white fw-bold rounded-3 px-4">
+                            <i class="fas fa-home me-2"></i>Về trang chủ
+                        </a>
+                        <a asp-controller="Account" asp-action="Logout" class="btn btn-outline-danger fw-bold rounded-3 px-4">
+                            <i class="fas fa-sign-out-alt me-2"></i>Đăng xuất
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .bg-gradient-orange {
+        background: linear-gradient(135deg, #ff5e00 0%, #ff8c42 100%);
+    }
+    .text-orange {
+        color: #ff5e00 !important;
+    }
+    .btn-orange {
+        background: linear-gradient(135deg, #ff5e00 0%, #ff8c42 100%);
+        border: none;
+    }
+    .btn-orange:hover {
+        background: linear-gradient(135deg, #e65500 0%, #ff7a30 100%);
+        color: white;
+    }
+    .info-item {
+        transition: all 0.2s ease;
+    }
+    .info-item:hover {
+        background-color: #fff3e8 !important;
+    }
+</style>

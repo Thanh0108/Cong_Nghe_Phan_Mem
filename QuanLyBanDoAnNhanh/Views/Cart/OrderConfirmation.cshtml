@@ -1,0 +1,169 @@
+@model QuanLyBanDoAnNhanh.Models.Order
+
+@{
+    ViewData["Title"] = "Đặt hàng thành công";
+}
+
+<div class="container py-5">
+    <!-- Steps -->
+    <div class="checkout-steps d-flex justify-content-center mb-5">
+        <div class="step completed"><span class="step-num"><i class="fas fa-check"></i></span><span class="step-text">Giỏ hàng</span></div>
+        <div class="step-line completed"></div>
+        <div class="step completed"><span class="step-num"><i class="fas fa-check"></i></span><span class="step-text">Thanh toán</span></div>
+        <div class="step-line completed"></div>
+        <div class="step completed"><span class="step-num"><i class="fas fa-check"></i></span><span class="step-text">Hoàn tất</span></div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <!-- Success Message -->
+            <div class="card border-0 shadow-sm rounded-4 text-center mb-4">
+                <div class="card-body p-5">
+                    <div class="success-icon mb-4">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h2 class="fw-bold mb-2">Đặt hàng thành công! 🎉</h2>
+                    <p class="text-muted lead mb-1">Cảm ơn bạn đã đặt hàng tại FastBite</p>
+                    <p class="text-muted">Mã đơn hàng: <strong class="text-orange">#@Model.Id</strong></p>
+
+                    <div class="bg-light rounded-3 p-3 d-inline-flex align-items-center gap-3 mt-2">
+                        <i class="fas fa-truck text-orange fs-4"></i>
+                        <div class="text-start">
+                            <p class="fw-bold mb-0">Dự kiến giao trong 30 phút</p>
+                            <small class="text-muted">Chúng tôi sẽ liên hệ xác nhận qua số điện thoại của bạn</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Order Details -->
+            <div class="card border-0 shadow-sm rounded-4 mb-4">
+                <div class="card-body p-4">
+                    <h5 class="fw-bold mb-4"><i class="fas fa-receipt text-orange me-2"></i>Chi tiết đơn hàng</h5>
+                    
+                    <div class="table-responsive">
+                        <table class="table align-middle mb-0">
+                            <thead class="bg-light">
+                                <tr>
+                                    <th>Sản phẩm</th>
+                                    <th class="text-center">Số lượng</th>
+                                    <th class="text-center">Đơn giá</th>
+                                    <th class="text-end">Thành tiền</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.OrderDetails)
+                                {
+                                    <tr>
+                                        <td class="fw-bold">@item.Product?.Name</td>
+                                        <td class="text-center">
+                                            <span class="badge bg-light text-dark border px-3 py-2">@item.Quantity</span>
+                                        </td>
+                                        <td class="text-center">@item.UnitPrice.ToString("N0")đ</td>
+                                        <td class="text-end text-orange fw-bold">@((item.UnitPrice * item.Quantity).ToString("N0"))đ</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <hr>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span class="text-muted">Tạm tính:</span>
+                        <span class="fw-bold">@Model.TotalAmount.ToString("N0")đ</span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span class="text-muted">Phí giao hàng:</span>
+                        <span class="text-success fw-bold">Miễn phí</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center pt-2 border-top">
+                        <h5 class="fw-bold mb-0">Tổng cộng:</h5>
+                        <h4 class="text-orange fw-bold mb-0">@Model.TotalAmount.ToString("N0")đ</h4>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Delivery Info -->
+            <div class="card border-0 shadow-sm rounded-4 mb-4">
+                <div class="card-body p-4">
+                    <h5 class="fw-bold mb-4"><i class="fas fa-map-marker-alt text-orange me-2"></i>Thông tin giao hàng</h5>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <small class="text-muted d-block">Người nhận</small>
+                            <span class="fw-bold">@Model.FullName</span>
+                        </div>
+                        <div class="col-md-6">
+                            <small class="text-muted d-block">Số điện thoại</small>
+                            <span class="fw-bold">@Model.Phone</span>
+                        </div>
+                        <div class="col-12">
+                            <small class="text-muted d-block">Địa chỉ</small>
+                            <span class="fw-bold">@Model.Address</span>
+                        </div>
+                        @if (!string.IsNullOrEmpty(Model.Note))
+                        {
+                            <div class="col-12">
+                                <small class="text-muted d-block">Ghi chú</small>
+                                <span>@Model.Note</span>
+                            </div>
+                        }
+                        <div class="col-md-6">
+                            <small class="text-muted d-block">Trạng thái</small>
+                            <span class="badge bg-warning text-dark px-3 py-2 rounded-pill">@Model.Status</span>
+                        </div>
+                        <div class="col-md-6">
+                            <small class="text-muted d-block">Ngày đặt</small>
+                            <span class="fw-bold">@Model.OrderDate.ToString("dd/MM/yyyy HH:mm")</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="d-flex gap-3 justify-content-center">
+                <a asp-controller="Home" asp-action="Index" class="btn btn-orange btn-lg rounded-pill px-5 fw-bold shadow-orange">
+                    <i class="fas fa-home me-2"></i>VỀ TRANG CHỦ
+                </a>
+                <a asp-controller="Home" asp-action="Menu" class="btn btn-outline-dark btn-lg rounded-pill px-5 fw-bold">
+                    <i class="fas fa-utensils me-2"></i>ĐẶT THÊM MÓN
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    :root { --primary-orange: #ff5e00; }
+    .text-orange { color: var(--primary-orange); }
+    .bg-orange { background-color: var(--primary-orange); }
+    .btn-orange { background-color: var(--primary-orange); color: white; border: none; transition: all 0.3s; }
+    .btn-orange:hover { background-color: #e65500; color: white; transform: translateY(-2px); }
+    .shadow-orange { box-shadow: 0 10px 25px rgba(255, 94, 0, 0.3); }
+    .rounded-4 { border-radius: 1rem; }
+
+    .success-icon {
+        width: 90px; height: 90px; margin: 0 auto;
+        background: linear-gradient(135deg, #28a745, #20c997);
+        border-radius: 50%; display: flex; align-items: center; justify-content: center;
+        animation: successPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .success-icon i { font-size: 2.5rem; color: white; }
+    @@keyframes successPop {
+        0% { transform: scale(0); }
+        100% { transform: scale(1); }
+    }
+
+    .checkout-steps { align-items: center; }
+    .step { display: flex; flex-direction: column; align-items: center; gap: 5px; }
+    .step-num {
+        width: 40px; height: 40px; border-radius: 50%;
+        background: #e9ecef; color: #999;
+        display: flex; align-items: center; justify-content: center;
+        font-weight: 700; font-size: 1rem;
+    }
+    .step.completed .step-num { background: #28a745; color: white; }
+    .step-text { font-size: 0.8rem; font-weight: 600; color: #999; }
+    .step.completed .step-text { color: #28a745; }
+    .step-line { width: 80px; height: 3px; background: #e9ecef; margin: 0 5px; margin-bottom: 20px; }
+    .step-line.completed { background: #28a745; }
+</style>

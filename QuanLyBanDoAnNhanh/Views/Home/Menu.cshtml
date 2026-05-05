@@ -1,0 +1,102 @@
+@model IEnumerable<QuanLyBanDoAnNhanh.Models.Product>
+
+@{
+    ViewData["Title"] = "Thực đơn đa dạng - FastBite";
+}
+
+<div class="container py-5 mb-5">
+    <div class="row mb-5 text-center">
+        <div class="col-lg-8 mx-auto">
+            <h2 class="fw-bold mb-3">Thực Đơn <span class="text-orange">Phong Phú</span></h2>
+            <p class="text-muted lead">Tất cả những món ăn ngon nhất được tuyển chọn kỹ lưỡng dành cho bạn.</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Sidebar: Categories -->
+        <div class="col-lg-3 mb-4">
+            <div class="card border-0 shadow-sm rounded-lg sticky-top" style="top: 100px;">
+                <div class="card-header bg-orange text-white border-0 py-3 rounded-top-lg">
+                    <h5 class="mb-0 fw-bold"><i class="fas fa-list me-2"></i> LOẠI MÓN</h5>
+                </div>
+                <div class="card-body p-0">
+                    <div class="list-group list-group-flush rounded-bottom-lg">
+                        <a href="javascript:void(0)" onclick="filterProducts(null, this)" class="list-group-item list-group-item-action py-3 px-4 border-0 category-link active-orange">
+                            <i class="fas fa-th-large me-2"></i> Tất cả món
+                        </a>
+                        @foreach (var cat in ViewBag.Categories)
+                        {
+                            <a href="javascript:void(0)" onclick="filterProducts(@cat.Id, this)" class="list-group-item list-group-item-action py-3 px-4 border-0 category-link">
+                                <i class="fas fa-utensils me-2"></i> @cat.Name
+                            </a>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Grid -->
+        <div class="col-lg-9">
+            <div id="product-grid" class="row g-4">
+                @foreach (var item in Model)
+                {
+                    <div class="col-md-6 col-xl-4 product-item" data-category="@item.CategoryId">
+                        <div class="card food-card-premium border-0 shadow-sm h-100">
+                            <div class="position-relative overflow-hidden rounded-top-lg">
+                                <img src="@item.ImageUrl" class="card-img-top food-img" alt="@item.Name" style="height: 200px; object-fit: cover;">
+                                <div class="food-overlay d-flex align-items-center justify-content-center">
+                                    <a asp-controller="Products" asp-action="Details" asp-route-id="@item.Id" class="btn btn-light rounded-pill px-4 fw-bold shadow-sm">
+                                        <i class="fas fa-eye me-2"></i> Chi tiết
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="card-body p-4 text-center">
+                                <h6 class="fw-bold mb-2">@item.Name</h6>
+                                <p class="text-orange fw-bold mb-3">@item.Price.ToString("N0")đ</p>
+                                <a asp-controller="Products" asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-orange btn-sm w-100 rounded-pill fw-bold">
+                                    ĐẶT MÓN
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .text-orange { color: #ff5e00; }
+    .bg-orange { background-color: #ff5e00; }
+    .btn-outline-orange { border: 2px solid #ff5e00; color: #ff5e00; }
+    .btn-outline-orange:hover { background-color: #ff5e00; color: white; }
+    .rounded-lg { border-radius: 1.5rem; }
+    .rounded-top-lg { border-top-left-radius: 1.5rem; border-top-right-radius: 1.5rem; }
+    .rounded-bottom-lg { border-bottom-left-radius: 1.5rem; border-bottom-right-radius: 1.5rem; }
+    .active-orange { background-color: rgba(255, 94, 0, 0.1) !important; color: #ff5e00 !important; font-weight: bold; }
+    
+    .food-card-premium { transition: 0.3s; }
+    .food-card-premium:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important; }
+    .food-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); opacity: 0; transition: 0.3s; }
+    .food-card-premium:hover .food-overlay { opacity: 1; }
+</style>
+
+@section Scripts {
+    <script>
+        function filterProducts(catId, element) {
+            // Cập nhật UI menu active
+            document.querySelectorAll('.category-link').forEach(link => link.classList.remove('active-orange'));
+            element.classList.add('active-orange');
+
+            // Lọc sản phẩm (ẩn/hiện đơn giản phía client để tránh nhảy trang)
+            const items = document.querySelectorAll('.product-item');
+            items.forEach(item => {
+                if (catId === null || item.getAttribute('data-category') == catId) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+    </script>
+}

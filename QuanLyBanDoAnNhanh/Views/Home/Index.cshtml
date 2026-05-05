@@ -1,0 +1,323 @@
+@model IEnumerable<QuanLyBanDoAnNhanh.Models.Product>
+
+@{
+    ViewData["Title"] = "FastBite - Thưởng thức hương vị tuyệt vời";
+    var bestSellers = ViewBag.BestSellers as List<QuanLyBanDoAnNhanh.Models.Product> ?? new List<QuanLyBanDoAnNhanh.Models.Product>();
+}
+
+<!-- Promo Countdown Banner -->
+<div class="promo-banner">
+    <div class="container d-flex flex-wrap justify-content-center align-items-center gap-3">
+        <span>🔥 <strong>FLASH SALE</strong> - Giảm 30% tất cả Pizza hôm nay!</span>
+        <div class="countdown d-flex gap-2" id="countdown">
+            <div class="cd-box"><span id="cd-hours">00</span><small>Giờ</small></div>
+            <div class="cd-box"><span id="cd-mins">00</span><small>Phút</small></div>
+            <div class="cd-box"><span id="cd-secs">00</span><small>Giây</small></div>
+        </div>
+        <a href="#menu" class="btn btn-sm btn-light fw-bold rounded-pill px-4">MUA NGAY</a>
+    </div>
+</div>
+
+<!-- Hero Section -->
+<section class="hero-section position-relative overflow-hidden">
+    <div class="container">
+        <div class="row align-items-center min-vh-75 py-5">
+            <div class="col-lg-6">
+                <div class="hero-content animate-fadein">
+                    <span class="badge bg-soft-orange text-orange px-3 py-2 rounded-pill mb-3 fw-bold">🔥 Ưu đãi cực sốc hôm nay</span>
+                    <h1 class="display-3 fw-bold mb-4">Hương vị <span class="text-orange">Tuyệt vời</span> Trong từng miếng cắn!</h1>
+                    <p class="lead text-muted mb-4">Giao hàng cực nhanh trong 30 phút. Miễn phí vận chuyển cho đơn hàng đầu tiên của bạn.</p>
+                    <div class="hero-stats d-flex gap-4 mb-4">
+                        <div><h3 class="fw-bold text-orange mb-0">@(ViewBag.TotalProducts ?? 0)+</h3><small class="text-muted">Món ăn</small></div>
+                        <div class="vr"></div>
+                        <div><h3 class="fw-bold text-orange mb-0">30'</h3><small class="text-muted">Giao hàng</small></div>
+                        <div class="vr"></div>
+                        <div><h3 class="fw-bold text-orange mb-0">4.9⭐</h3><small class="text-muted">Đánh giá</small></div>
+                    </div>
+                    <div class="d-flex gap-3">
+                        <a href="#menu" class="btn btn-orange btn-lg rounded-pill px-5 py-3 fw-bold shadow-orange">ĐẶT MÓN NGAY</a>
+                        <a href="#why-us" class="btn btn-outline-dark btn-lg rounded-pill px-4 py-3 fw-bold">TÌM HIỂU THÊM</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 mt-5 mt-lg-0">
+                <div class="hero-image-wrapper position-relative animate-zoomin">
+                    <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=1000&auto=format&fit=crop" alt="Pizza" class="img-fluid rounded-custom shadow-lg main-pizza">
+                    <div class="floating-card card p-3 shadow-lg border-0 rounded-lg">
+                        <div class="d-flex align-items-center">
+                            <div class="bg-success rounded-circle p-2 me-3"><i class="fas fa-check text-white"></i></div>
+                            <div><h6 class="fw-bold mb-0">100% Nguyên liệu tươi</h6><p class="small text-muted mb-0">Chuẩn sạch mỗi ngày</p></div>
+                        </div>
+                    </div>
+                    <div class="floating-card-2 card p-3 shadow-lg border-0 rounded-lg">
+                        <div class="d-flex align-items-center">
+                            <div class="bg-orange rounded-circle p-2 me-3"><i class="fas fa-shipping-fast text-white"></i></div>
+                            <div><h6 class="fw-bold mb-0">Giao siêu tốc</h6><p class="small text-muted mb-0">Chỉ 30 phút</p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="hero-shape"></div>
+</section>
+
+<!-- Why Choose Us -->
+<section id="why-us" class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold">Tại Sao Chọn <span class="text-orange">FastBite</span>?</h2>
+            <p class="text-muted">Chúng tôi cam kết mang đến trải nghiệm tốt nhất</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-3 col-md-6">
+                <div class="why-card text-center p-4 bg-white rounded-4 shadow-sm h-100">
+                    <div class="why-icon mb-3"><i class="fas fa-clock"></i></div>
+                    <h5 class="fw-bold">Giao Nhanh 30 Phút</h5>
+                    <p class="text-muted small mb-0">Đảm bảo món ăn luôn nóng hổi khi đến tay bạn</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="why-card text-center p-4 bg-white rounded-4 shadow-sm h-100">
+                    <div class="why-icon mb-3"><i class="fas fa-leaf"></i></div>
+                    <h5 class="fw-bold">Nguyên Liệu Tươi</h5>
+                    <p class="text-muted small mb-0">100% thực phẩm sạch, nguồn gốc rõ ràng</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="why-card text-center p-4 bg-white rounded-4 shadow-sm h-100">
+                    <div class="why-icon mb-3"><i class="fas fa-award"></i></div>
+                    <h5 class="fw-bold">Đầu Bếp 5 Sao</h5>
+                    <p class="text-muted small mb-0">Đội ngũ đầu bếp chuyên nghiệp, giàu kinh nghiệm</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="why-card text-center p-4 bg-white rounded-4 shadow-sm h-100">
+                    <div class="why-icon mb-3"><i class="fas fa-tags"></i></div>
+                    <h5 class="fw-bold">Giá Cả Hợp Lý</h5>
+                    <p class="text-muted small mb-0">Nhiều combo tiết kiệm, khuyến mãi hấp dẫn</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Best Sellers -->
+<section class="py-5">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <h2 class="fw-bold mb-1">🏆 Món <span class="text-orange">Bán Chạy</span></h2>
+                <p class="text-muted mb-0">Được yêu thích nhất tuần này</p>
+            </div>
+            <a href="#menu" class="btn btn-outline-orange rounded-pill px-4 fw-bold">Xem tất cả <i class="fas fa-arrow-right ms-1"></i></a>
+        </div>
+        <div class="row g-4">
+            @foreach (var item in bestSellers)
+            {
+                <div class="col-lg-4 col-md-6">
+                    <div class="card bestseller-card border-0 shadow-sm h-100 overflow-hidden">
+                        <div class="row g-0">
+                            <div class="col-5">
+                                <img src="@item.ImageUrl" class="img-fluid h-100" style="object-fit:cover;" alt="@item.Name">
+                            </div>
+                            <div class="col-7">
+                                <div class="card-body d-flex flex-column justify-content-center p-3">
+                                    <span class="badge bg-soft-orange text-orange rounded-pill mb-2 w-fit">@item.Category?.Name</span>
+                                    <h6 class="fw-bold mb-1">@item.Name</h6>
+                                    <p class="text-muted small mb-2 text-truncate">@item.Description</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <span class="text-orange fw-bold fs-5">@item.Price.ToString("N0")đ</span>
+                                        <a asp-controller="Products" asp-action="Details" asp-route-id="@item.Id" class="btn btn-orange btn-sm rounded-pill px-3"><i class="fas fa-plus"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<!-- CTA Banner -->
+<section class="cta-banner py-5">
+    <div class="container text-center text-white">
+        <h2 class="display-5 fw-bold mb-3">Đói Bụng Rồi? 🍕</h2>
+        <p class="lead mb-4 opacity-75">Đặt hàng ngay hôm nay và nhận ưu đãi giảm 20% cho đơn hàng đầu tiên!</p>
+        <a href="#menu" class="btn btn-light btn-lg rounded-pill px-5 py-3 fw-bold text-orange shadow">ĐẶT HÀNG NGAY <i class="fas fa-arrow-right ms-2"></i></a>
+    </div>
+</section>
+
+<!-- Menu Section -->
+<section id="menu" class="py-5 mb-5">
+    <div class="container">
+        <div class="row mb-5 text-center">
+            <div class="col-lg-8 mx-auto">
+                <h2 class="fw-bold mb-3">Khám Phá <span class="text-orange">Thực Đơn</span></h2>
+                <p class="text-muted lead">Đa dạng các món ăn từ Pizza, Burger đến Mì Ý chuẩn vị.</p>
+            </div>
+        </div>
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-lg-3 mb-4">
+                <div class="card border-0 shadow-sm rounded-lg sticky-top" style="top: 100px;">
+                    <div class="card-header bg-orange text-white border-0 py-3 rounded-top-lg">
+                        <h5 class="mb-0 fw-bold"><i class="fas fa-filter me-2"></i> DANH MỤC</h5>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="list-group list-group-flush rounded-bottom-lg">
+                            <a href="javascript:void(0)" onclick="filterProducts(null, this)" class="list-group-item list-group-item-action py-3 px-4 border-0 category-link active-orange">
+                                <i class="fas fa-th-large me-2"></i> Tất cả món
+                            </a>
+                            @foreach (var cat in ViewBag.Categories)
+                            {
+                                <a href="javascript:void(0)" onclick="filterProducts(@cat.Id, this)" class="list-group-item list-group-item-action py-3 px-4 border-0 category-link">
+                                    <i class="fas fa-utensils me-2"></i> @cat.Name
+                                </a>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Product Grid -->
+            <div class="col-lg-9">
+                <div id="product-grid" class="row g-4">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-md-6 col-xl-4 product-item" data-category="@item.CategoryId">
+                            <div class="card food-card-premium border-0 shadow-sm h-100">
+                                <div class="position-relative overflow-hidden rounded-top-lg">
+                                    <img src="@item.ImageUrl" class="card-img-top food-img" alt="@item.Name" style="height: 220px; object-fit: cover;">
+                                    <div class="food-overlay d-flex align-items-center justify-content-center">
+                                        <a asp-controller="Products" asp-action="Details" asp-route-id="@item.Id" class="btn btn-light rounded-pill px-4 fw-bold shadow-sm">
+                                            <i class="fas fa-eye me-2"></i> Xem chi tiết
+                                        </a>
+                                    </div>
+                                    <span class="position-absolute top-0 end-0 m-3 badge bg-orange rounded-pill px-3 py-2">Mới</span>
+                                </div>
+                                <div class="card-body p-4 text-center">
+                                    <h5 class="fw-bold mb-2">@item.Name</h5>
+                                    <div class="d-flex justify-content-center align-items-center mb-3">
+                                        <span class="text-orange fw-bold fs-4">@item.Price.ToString("N0")đ</span>
+                                    </div>
+                                    <p class="text-muted small text-truncate-2 mb-4">@item.Description</p>
+                                    <a asp-controller="Products" asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-orange w-100 rounded-pill fw-bold py-2">
+                                        <i class="fas fa-plus me-2"></i> ĐẶT MÓN
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold">Khách Hàng <span class="text-orange">Nói Gì?</span></h2>
+            <p class="text-muted">Hàng ngàn khách hàng hài lòng với dịch vụ của chúng tôi</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-4">
+                <div class="card border-0 shadow-sm p-4 h-100 testimonial-card">
+                    <div class="d-flex text-warning mb-3">⭐⭐⭐⭐⭐</div>
+                    <p class="text-muted mb-3">"Pizza ở đây ngon cực kỳ! Đế giòn, phô mai kéo sợi tuyệt vời. Giao hàng cũng rất nhanh, chỉ 20 phút!"</p>
+                    <div class="d-flex align-items-center mt-auto">
+                        <div class="avatar-circle bg-orange text-white me-3">TL</div>
+                        <div><h6 class="fw-bold mb-0">Thanh Lan</h6><small class="text-muted">Khách quen 2 năm</small></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card border-0 shadow-sm p-4 h-100 testimonial-card">
+                    <div class="d-flex text-warning mb-3">⭐⭐⭐⭐⭐</div>
+                    <p class="text-muted mb-3">"Gà chiên giòn rụm, sốt BBQ đậm đà. Mình hay đặt combo gà + nước cho cả nhà, ai cũng thích!"</p>
+                    <div class="d-flex align-items-center mt-auto">
+                        <div class="avatar-circle bg-success text-white me-3">MH</div>
+                        <div><h6 class="fw-bold mb-0">Minh Hoàng</h6><small class="text-muted">Đã đặt 50+ đơn</small></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card border-0 shadow-sm p-4 h-100 testimonial-card">
+                    <div class="d-flex text-warning mb-3">⭐⭐⭐⭐⭐</div>
+                    <p class="text-muted mb-3">"Mì Ý Carbonara ở đây làm chuẩn vị Ý. Nhân viên phục vụ nhiệt tình, app đặt hàng tiện lợi!"</p>
+                    <div class="d-flex align-items-center mt-auto">
+                        <div class="avatar-circle bg-primary text-white me-3">AT</div>
+                        <div><h6 class="fw-bold mb-0">Anh Thư</h6><small class="text-muted">Food Blogger</small></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Back to top -->
+<button id="backToTop" class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <i class="fas fa-chevron-up"></i>
+</button>
+
+@section Scripts {
+    <script>
+        // Filter products
+        function filterProducts(catId, element) {
+            document.querySelectorAll('.category-link').forEach(link => link.classList.remove('active-orange'));
+            element.classList.add('active-orange');
+            const items = document.querySelectorAll('.product-item');
+            items.forEach(item => {
+                if (catId === null || item.getAttribute('data-category') == catId) {
+                    item.style.display = 'block';
+                    item.style.animation = 'fadeInUp 0.4s ease forwards';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Countdown timer
+        function startCountdown() {
+            const now = new Date();
+            const end = new Date(now);
+            end.setHours(23, 59, 59, 0);
+            function update() {
+                const diff = end - new Date();
+                if (diff <= 0) return;
+                const h = Math.floor(diff / 3600000);
+                const m = Math.floor((diff % 3600000) / 60000);
+                const s = Math.floor((diff % 60000) / 1000);
+                document.getElementById('cd-hours').textContent = String(h).padStart(2, '0');
+                document.getElementById('cd-mins').textContent = String(m).padStart(2, '0');
+                document.getElementById('cd-secs').textContent = String(s).padStart(2, '0');
+            }
+            update();
+            setInterval(update, 1000);
+        }
+        startCountdown();
+
+        // Back to top button
+        window.addEventListener('scroll', () => {
+            const btn = document.getElementById('backToTop');
+            btn.style.display = window.scrollY > 400 ? 'flex' : 'none';
+        });
+
+        // Scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.why-card, .bestseller-card, .testimonial-card, .food-card-premium').forEach(el => {
+            el.classList.add('animate-on-scroll');
+            observer.observe(el);
+        });
+    </script>
+}
+
+<link rel="stylesheet" href="~/css/homepage.css" />

@@ -1,0 +1,299 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\thanh\\Downloads\\QuanLyBanDoAnNhanhV2\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{042CA377-5A4C-4C12-B3A1-66C37925F85F}|QuanLyBanDoAnNhanh\\QuanLyBanDoAnNhanh.csproj|c:\\users\\thanh\\downloads\\quanlybandoannhanhv2\\quanlybandoannhanh\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{042CA377-5A4C-4C12-B3A1-66C37925F85F}|QuanLyBanDoAnNhanh\\QuanLyBanDoAnNhanh.csproj|solutionrelative:quanlybandoannhanh\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{042CA377-5A4C-4C12-B3A1-66C37925F85F}|QuanLyBanDoAnNhanh\\QuanLyBanDoAnNhanh.csproj|c:\\users\\thanh\\downloads\\quanlybandoannhanhv2\\quanlybandoannhanh\\migrations\\20260423021832_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{042CA377-5A4C-4C12-B3A1-66C37925F85F}|QuanLyBanDoAnNhanh\\QuanLyBanDoAnNhanh.csproj|solutionrelative:quanlybandoannhanh\\migrations\\20260423021832_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{042CA377-5A4C-4C12-B3A1-66C37925F85F}|QuanLyBanDoAnNhanh\\QuanLyBanDoAnNhanh.csproj|c:\\users\\thanh\\downloads\\quanlybandoannhanhv2\\quanlybandoannhanh\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{042CA377-5A4C-4C12-B3A1-66C37925F85F}|QuanLyBanDoAnNhanh\\QuanLyBanDoAnNhanh.csproj|solutionrelative:quanlybandoannhanh\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{042CA377-5A4C-4C12-B3A1-66C37925F85F}|QuanLyBanDoAnNhanh\\QuanLyBanDoAnNhanh.csproj|c:\\users\\thanh\\downloads\\quanlybandoannhanhv2\\quanlybandoannhanh\\views\\cart\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{042CA377-5A4C-4C12-B3A1-66C37925F85F}|QuanLyBanDoAnNhanh\\QuanLyBanDoAnNhanh.csproj|solutionrelative:quanlybandoannhanh\\views\\cart\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{042CA377-5A4C-4C12-B3A1-66C37925F85F}|QuanLyBanDoAnNhanh\\QuanLyBanDoAnNhanh.csproj|c:\\users\\thanh\\downloads\\quanlybandoannhanhv2\\quanlybandoannhanh\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{042CA377-5A4C-4C12-B3A1-66C37925F85F}|QuanLyBanDoAnNhanh\\QuanLyBanDoAnNhanh.csproj|solutionrelative:quanlybandoannhanh\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{042CA377-5A4C-4C12-B3A1-66C37925F85F}|QuanLyBanDoAnNhanh\\QuanLyBanDoAnNhanh.csproj|c:\\users\\thanh\\downloads\\quanlybandoannhanhv2\\quanlybandoannhanh\\models\\cartitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{042CA377-5A4C-4C12-B3A1-66C37925F85F}|QuanLyBanDoAnNhanh\\QuanLyBanDoAnNhanh.csproj|solutionrelative:quanlybandoannhanh\\models\\cartitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{042CA377-5A4C-4C12-B3A1-66C37925F85F}|QuanLyBanDoAnNhanh\\QuanLyBanDoAnNhanh.csproj|c:\\users\\thanh\\downloads\\quanlybandoannhanhv2\\quanlybandoannhanh\\seeddata\\dbinitializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{042CA377-5A4C-4C12-B3A1-66C37925F85F}|QuanLyBanDoAnNhanh\\QuanLyBanDoAnNhanh.csproj|solutionrelative:quanlybandoannhanh\\seeddata\\dbinitializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{042CA377-5A4C-4C12-B3A1-66C37925F85F}|QuanLyBanDoAnNhanh\\QuanLyBanDoAnNhanh.csproj|c:\\users\\thanh\\downloads\\quanlybandoannhanhv2\\quanlybandoannhanh\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{042CA377-5A4C-4C12-B3A1-66C37925F85F}|QuanLyBanDoAnNhanh\\QuanLyBanDoAnNhanh.csproj|solutionrelative:quanlybandoannhanh\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{042CA377-5A4C-4C12-B3A1-66C37925F85F}|QuanLyBanDoAnNhanh\\QuanLyBanDoAnNhanh.csproj|c:\\users\\thanh\\downloads\\quanlybandoannhanhv2\\quanlybandoannhanh\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{042CA377-5A4C-4C12-B3A1-66C37925F85F}|QuanLyBanDoAnNhanh\\QuanLyBanDoAnNhanh.csproj|solutionrelative:quanlybandoannhanh\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{042CA377-5A4C-4C12-B3A1-66C37925F85F}|QuanLyBanDoAnNhanh\\QuanLyBanDoAnNhanh.csproj|c:\\users\\thanh\\downloads\\quanlybandoannhanhv2\\quanlybandoannhanh\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{042CA377-5A4C-4C12-B3A1-66C37925F85F}|QuanLyBanDoAnNhanh\\QuanLyBanDoAnNhanh.csproj|solutionrelative:quanlybandoannhanh\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{042CA377-5A4C-4C12-B3A1-66C37925F85F}|QuanLyBanDoAnNhanh\\QuanLyBanDoAnNhanh.csproj|c:\\users\\thanh\\downloads\\quanlybandoannhanhv2\\quanlybandoannhanh\\views\\helpers\\sessionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{042CA377-5A4C-4C12-B3A1-66C37925F85F}|QuanLyBanDoAnNhanh\\QuanLyBanDoAnNhanh.csproj|solutionrelative:quanlybandoannhanh\\views\\helpers\\sessionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{042CA377-5A4C-4C12-B3A1-66C37925F85F}|QuanLyBanDoAnNhanh\\QuanLyBanDoAnNhanh.csproj|c:\\users\\thanh\\downloads\\quanlybandoannhanhv2\\quanlybandoannhanh\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{042CA377-5A4C-4C12-B3A1-66C37925F85F}|QuanLyBanDoAnNhanh\\QuanLyBanDoAnNhanh.csproj|solutionrelative:quanlybandoannhanh\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{042CA377-5A4C-4C12-B3A1-66C37925F85F}|QuanLyBanDoAnNhanh\\QuanLyBanDoAnNhanh.csproj|c:\\users\\thanh\\downloads\\quanlybandoannhanhv2\\quanlybandoannhanh\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{042CA377-5A4C-4C12-B3A1-66C37925F85F}|QuanLyBanDoAnNhanh\\QuanLyBanDoAnNhanh.csproj|solutionrelative:quanlybandoannhanh\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{042CA377-5A4C-4C12-B3A1-66C37925F85F}|QuanLyBanDoAnNhanh\\QuanLyBanDoAnNhanh.csproj|c:\\users\\thanh\\downloads\\quanlybandoannhanhv2\\quanlybandoannhanh\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{042CA377-5A4C-4C12-B3A1-66C37925F85F}|QuanLyBanDoAnNhanh\\QuanLyBanDoAnNhanh.csproj|solutionrelative:quanlybandoannhanh\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{042CA377-5A4C-4C12-B3A1-66C37925F85F}|QuanLyBanDoAnNhanh\\QuanLyBanDoAnNhanh.csproj|c:\\users\\thanh\\downloads\\quanlybandoannhanhv2\\quanlybandoannhanh\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{042CA377-5A4C-4C12-B3A1-66C37925F85F}|QuanLyBanDoAnNhanh\\QuanLyBanDoAnNhanh.csproj|solutionrelative:quanlybandoannhanh\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{042CA377-5A4C-4C12-B3A1-66C37925F85F}|QuanLyBanDoAnNhanh\\QuanLyBanDoAnNhanh.csproj|c:\\users\\thanh\\downloads\\quanlybandoannhanhv2\\quanlybandoannhanh\\quanlybandoannhanh.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{042CA377-5A4C-4C12-B3A1-66C37925F85F}|QuanLyBanDoAnNhanh\\QuanLyBanDoAnNhanh.csproj|solutionrelative:quanlybandoannhanh\\quanlybandoannhanh.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{042CA377-5A4C-4C12-B3A1-66C37925F85F}|QuanLyBanDoAnNhanh\\QuanLyBanDoAnNhanh.csproj|c:\\users\\thanh\\downloads\\quanlybandoannhanhv2\\quanlybandoannhanh\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{042CA377-5A4C-4C12-B3A1-66C37925F85F}|QuanLyBanDoAnNhanh\\QuanLyBanDoAnNhanh.csproj|solutionrelative:quanlybandoannhanh\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 14,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "CartController.cs",
+              "DocumentMoniker": "C:\\Users\\thanh\\Downloads\\QuanLyBanDoAnNhanhV2\\QuanLyBanDoAnNhanh\\Controllers\\CartController.cs",
+              "RelativeDocumentMoniker": "QuanLyBanDoAnNhanh\\Controllers\\CartController.cs",
+              "ToolTip": "C:\\Users\\thanh\\Downloads\\QuanLyBanDoAnNhanhV2\\QuanLyBanDoAnNhanh\\Controllers\\CartController.cs",
+              "RelativeToolTip": "QuanLyBanDoAnNhanh\\Controllers\\CartController.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAswCEAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-01T10:12:17.614Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "SessionExtensions.cs",
+              "DocumentMoniker": "C:\\Users\\thanh\\Downloads\\QuanLyBanDoAnNhanhV2\\QuanLyBanDoAnNhanh\\Views\\Helpers\\SessionExtensions.cs",
+              "RelativeDocumentMoniker": "QuanLyBanDoAnNhanh\\Views\\Helpers\\SessionExtensions.cs",
+              "ToolTip": "C:\\Users\\thanh\\Downloads\\QuanLyBanDoAnNhanhV2\\QuanLyBanDoAnNhanh\\Views\\Helpers\\SessionExtensions.cs",
+              "RelativeToolTip": "QuanLyBanDoAnNhanh\\Views\\Helpers\\SessionExtensions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-01T10:12:17.611Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "C:\\Users\\thanh\\Downloads\\QuanLyBanDoAnNhanhV2\\QuanLyBanDoAnNhanh\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "QuanLyBanDoAnNhanh\\Properties\\launchSettings.json",
+              "ToolTip": "C:\\Users\\thanh\\Downloads\\QuanLyBanDoAnNhanhV2\\QuanLyBanDoAnNhanh\\Properties\\launchSettings.json",
+              "RelativeToolTip": "QuanLyBanDoAnNhanh\\Properties\\launchSettings.json",
+              "ViewState": "AgIAABAAAAAAAAAAAAAQwCYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-05-01T10:12:17.616Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\thanh\\Downloads\\QuanLyBanDoAnNhanhV2\\QuanLyBanDoAnNhanh\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "QuanLyBanDoAnNhanh\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\thanh\\Downloads\\QuanLyBanDoAnNhanhV2\\QuanLyBanDoAnNhanh\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "QuanLyBanDoAnNhanh\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAADYAAAAAAAAAAAAAAFMAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-05-01T10:12:17.619Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\thanh\\Downloads\\QuanLyBanDoAnNhanhV2\\QuanLyBanDoAnNhanh\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "QuanLyBanDoAnNhanh\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\thanh\\Downloads\\QuanLyBanDoAnNhanhV2\\QuanLyBanDoAnNhanh\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "QuanLyBanDoAnNhanh\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAKcAAAAAAAAAAAAYwMAAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-05-01T10:12:17.622Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\thanh\\Downloads\\QuanLyBanDoAnNhanhV2\\QuanLyBanDoAnNhanh\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "QuanLyBanDoAnNhanh\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\thanh\\Downloads\\QuanLyBanDoAnNhanhV2\\QuanLyBanDoAnNhanh\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "QuanLyBanDoAnNhanh\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-01T10:12:17.625Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\thanh\\Downloads\\QuanLyBanDoAnNhanhV2\\QuanLyBanDoAnNhanh\\Program.cs",
+              "RelativeDocumentMoniker": "QuanLyBanDoAnNhanh\\Program.cs",
+              "ToolTip": "C:\\Users\\thanh\\Downloads\\QuanLyBanDoAnNhanhV2\\QuanLyBanDoAnNhanh\\Program.cs",
+              "RelativeToolTip": "QuanLyBanDoAnNhanh\\Program.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAAB8AAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-01T10:12:17.716Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "CartItem.cs",
+              "DocumentMoniker": "C:\\Users\\thanh\\Downloads\\QuanLyBanDoAnNhanhV2\\QuanLyBanDoAnNhanh\\Models\\CartItem.cs",
+              "RelativeDocumentMoniker": "QuanLyBanDoAnNhanh\\Models\\CartItem.cs",
+              "ToolTip": "C:\\Users\\thanh\\Downloads\\QuanLyBanDoAnNhanhV2\\QuanLyBanDoAnNhanh\\Models\\CartItem.cs",
+              "RelativeToolTip": "QuanLyBanDoAnNhanh\\Models\\CartItem.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-01T10:12:17.608Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\thanh\\Downloads\\QuanLyBanDoAnNhanhV2\\QuanLyBanDoAnNhanh\\Views\\Cart\\Index.cshtml",
+              "RelativeDocumentMoniker": "QuanLyBanDoAnNhanh\\Views\\Cart\\Index.cshtml",
+              "ToolTip": "C:\\Users\\thanh\\Downloads\\QuanLyBanDoAnNhanhV2\\QuanLyBanDoAnNhanh\\Views\\Cart\\Index.cshtml",
+              "RelativeToolTip": "QuanLyBanDoAnNhanh\\Views\\Cart\\Index.cshtml",
+              "ViewState": "AgIAAHgAAAAAAAAAAAAAACwAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-05-01T10:12:17.604Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "DbInitializer.cs",
+              "DocumentMoniker": "C:\\Users\\thanh\\Downloads\\QuanLyBanDoAnNhanhV2\\QuanLyBanDoAnNhanh\\SeedData\\DbInitializer.cs",
+              "RelativeDocumentMoniker": "QuanLyBanDoAnNhanh\\SeedData\\DbInitializer.cs",
+              "ToolTip": "C:\\Users\\thanh\\Downloads\\QuanLyBanDoAnNhanhV2\\QuanLyBanDoAnNhanh\\SeedData\\DbInitializer.cs",
+              "RelativeToolTip": "QuanLyBanDoAnNhanh\\SeedData\\DbInitializer.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAQwA4AAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-01T10:12:17.627Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\thanh\\Downloads\\QuanLyBanDoAnNhanhV2\\QuanLyBanDoAnNhanh\\appsettings.json",
+              "RelativeDocumentMoniker": "QuanLyBanDoAnNhanh\\appsettings.json",
+              "ToolTip": "C:\\Users\\thanh\\Downloads\\QuanLyBanDoAnNhanhV2\\QuanLyBanDoAnNhanh\\appsettings.json",
+              "RelativeToolTip": "QuanLyBanDoAnNhanh\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-05-01T10:12:17.719Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "QuanLyBanDoAnNhanh.csproj",
+              "DocumentMoniker": "C:\\Users\\thanh\\Downloads\\QuanLyBanDoAnNhanhV2\\QuanLyBanDoAnNhanh\\QuanLyBanDoAnNhanh.csproj",
+              "RelativeDocumentMoniker": "QuanLyBanDoAnNhanh\\QuanLyBanDoAnNhanh.csproj",
+              "ToolTip": "C:\\Users\\thanh\\Downloads\\QuanLyBanDoAnNhanhV2\\QuanLyBanDoAnNhanh\\QuanLyBanDoAnNhanh.csproj",
+              "RelativeToolTip": "QuanLyBanDoAnNhanh\\QuanLyBanDoAnNhanh.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-05-01T10:12:17.633Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "ProductsController.cs",
+              "DocumentMoniker": "C:\\Users\\thanh\\Downloads\\QuanLyBanDoAnNhanhV2\\QuanLyBanDoAnNhanh\\Controllers\\ProductsController.cs",
+              "RelativeDocumentMoniker": "QuanLyBanDoAnNhanh\\Controllers\\ProductsController.cs",
+              "ToolTip": "C:\\Users\\thanh\\Downloads\\QuanLyBanDoAnNhanhV2\\QuanLyBanDoAnNhanh\\Controllers\\ProductsController.cs",
+              "RelativeToolTip": "QuanLyBanDoAnNhanh\\Controllers\\ProductsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-01T10:12:17.695Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "20260423021832_InitialCreate.cs",
+              "DocumentMoniker": "C:\\Users\\thanh\\Downloads\\QuanLyBanDoAnNhanhV2\\QuanLyBanDoAnNhanh\\Migrations\\20260423021832_InitialCreate.cs",
+              "RelativeDocumentMoniker": "QuanLyBanDoAnNhanh\\Migrations\\20260423021832_InitialCreate.cs",
+              "ToolTip": "C:\\Users\\thanh\\Downloads\\QuanLyBanDoAnNhanhV2\\QuanLyBanDoAnNhanh\\Migrations\\20260423021832_InitialCreate.cs",
+              "RelativeToolTip": "QuanLyBanDoAnNhanh\\Migrations\\20260423021832_InitialCreate.cs",
+              "ViewState": "AgIAADQAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-01T10:12:17.71Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\thanh\\Downloads\\QuanLyBanDoAnNhanhV2\\QuanLyBanDoAnNhanh\\Data\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "QuanLyBanDoAnNhanh\\Data\\ApplicationDbContext.cs",
+              "ToolTip": "C:\\Users\\thanh\\Downloads\\QuanLyBanDoAnNhanhV2\\QuanLyBanDoAnNhanh\\Data\\ApplicationDbContext.cs",
+              "RelativeToolTip": "QuanLyBanDoAnNhanh\\Data\\ApplicationDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-01T10:12:17.722Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Category.cs",
+              "DocumentMoniker": "C:\\Users\\thanh\\Downloads\\QuanLyBanDoAnNhanhV2\\QuanLyBanDoAnNhanh\\Models\\Category.cs",
+              "RelativeDocumentMoniker": "QuanLyBanDoAnNhanh\\Models\\Category.cs",
+              "ToolTip": "C:\\Users\\thanh\\Downloads\\QuanLyBanDoAnNhanhV2\\QuanLyBanDoAnNhanh\\Models\\Category.cs",
+              "RelativeToolTip": "QuanLyBanDoAnNhanh\\Models\\Category.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-01T10:12:17.724Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Product.cs",
+              "DocumentMoniker": "C:\\Users\\thanh\\Downloads\\QuanLyBanDoAnNhanhV2\\QuanLyBanDoAnNhanh\\Models\\Product.cs",
+              "RelativeDocumentMoniker": "QuanLyBanDoAnNhanh\\Models\\Product.cs",
+              "ToolTip": "C:\\Users\\thanh\\Downloads\\QuanLyBanDoAnNhanhV2\\QuanLyBanDoAnNhanh\\Models\\Product.cs",
+              "RelativeToolTip": "QuanLyBanDoAnNhanh\\Models\\Product.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-01T10:12:17.728Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

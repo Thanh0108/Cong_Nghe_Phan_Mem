@@ -1,0 +1,360 @@
+@model List<QuanLyBanDoAnNhanh.Models.CartItem>
+
+@{
+    ViewData["Title"] = "Thanh toán";
+}
+
+<div class="container py-5">
+    <!-- Breadcrumb Steps -->
+    <div class="checkout-steps d-flex justify-content-center mb-5">
+        <div class="step completed"><span class="step-num">1</span><span class="step-text">Giỏ hàng</span></div>
+        <div class="step-line completed"></div>
+        <div class="step active"><span class="step-num">2</span><span class="step-text">Thanh toán</span></div>
+        <div class="step-line"></div>
+        <div class="step"><span class="step-num">3</span><span class="step-text">Hoàn tất</span></div>
+    </div>
+
+    <form asp-action="PlaceOrder" method="post" id="checkoutForm">
+        <div class="row">
+            <!-- Left: Form thông tin -->
+            <div class="col-lg-7 mb-4">
+                <!-- Thông tin giao hàng -->
+                <div class="card border-0 shadow-sm rounded-4 mb-4">
+                    <div class="card-body p-4">
+                        <h5 class="fw-bold mb-4"><i class="fas fa-map-marker-alt text-orange me-2"></i>Thông tin giao hàng</h5>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label small fw-bold text-muted">HỌ VÀ TÊN</label>
+                                <input type="text" name="fullName" class="form-control rounded-3 py-2" value="@ViewBag.UserName" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small fw-bold text-muted">SỐ ĐIỆN THOẠI</label>
+                                <input type="tel" name="phone" class="form-control rounded-3 py-2" value="@ViewBag.UserPhone" required>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label small fw-bold text-muted">EMAIL</label>
+                                <input type="email" class="form-control rounded-3 py-2" value="@ViewBag.UserEmail" disabled>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label small fw-bold text-muted">ĐỊA CHỈ GIAO HÀNG</label>
+                                <input type="text" name="address" class="form-control rounded-3 py-2" value="@ViewBag.UserAddress" placeholder="Số nhà, đường, phường/xã, quận/huyện..." required>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label small fw-bold text-muted">GHI CHÚ</label>
+                                <textarea name="note" class="form-control rounded-3" rows="2" placeholder="Ví dụ: Gọi trước khi giao, đồ ăn ít cay..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phương thức thanh toán -->
+                <div class="card border-0 shadow-sm rounded-4">
+                    <div class="card-body p-4">
+                        <h5 class="fw-bold mb-4"><i class="fas fa-credit-card text-orange me-2"></i>Phương thức thanh toán</h5>
+                        <div class="payment-options">
+                            <label class="payment-option active" id="opt-cod">
+                                <input type="radio" name="paymentMethod" value="COD" checked class="d-none" onchange="selectPayment('cod')">
+                                <div class="d-flex align-items-center">
+                                    <div class="payment-icon bg-soft-green"><i class="fas fa-money-bill-wave text-success"></i></div>
+                                    <div class="ms-3 flex-grow-1">
+                                        <h6 class="fw-bold mb-0">Thanh toán khi nhận hàng (COD)</h6>
+                                        <small class="text-muted">Thanh toán bằng tiền mặt khi nhận đồ ăn</small>
+                                    </div>
+                                    <i class="fas fa-check-circle text-success fs-5 check-icon"></i>
+                                </div>
+                            </label>
+                            <label class="payment-option" id="opt-banking">
+                                <input type="radio" name="paymentMethod" value="Banking" class="d-none" onchange="selectPayment('banking')">
+                                <div class="d-flex align-items-center">
+                                    <div class="payment-icon bg-soft-blue"><i class="fas fa-university text-primary"></i></div>
+                                    <div class="ms-3 flex-grow-1">
+                                        <h6 class="fw-bold mb-0">Chuyển khoản ngân hàng</h6>
+                                        <small class="text-muted">Chuyển khoản qua tài khoản ngân hàng</small>
+                                    </div>
+                                    <i class="fas fa-check-circle text-success fs-5 check-icon"></i>
+                                </div>
+                            </label>
+                            <label class="payment-option" id="opt-momo">
+                                <input type="radio" name="paymentMethod" value="MoMo" class="d-none" onchange="selectPayment('momo')">
+                                <div class="d-flex align-items-center">
+                                    <div class="payment-icon bg-soft-pink"><i class="fas fa-wallet text-danger"></i></div>
+                                    <div class="ms-3 flex-grow-1">
+                                        <h6 class="fw-bold mb-0">Ví MoMo</h6>
+                                        <small class="text-muted">Thanh toán qua ví điện tử MoMo</small>
+                                    </div>
+                                    <i class="fas fa-check-circle text-success fs-5 check-icon"></i>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Tóm tắt đơn hàng -->
+            <div class="col-lg-5">
+                <div class="card border-0 shadow-sm rounded-4 sticky-top" style="top:100px;">
+                    <div class="card-body p-4">
+                        <h5 class="fw-bold mb-4"><i class="fas fa-receipt text-orange me-2"></i>Đơn hàng của bạn</h5>
+
+                        <div class="order-items">
+                            @foreach (var item in Model)
+                            {
+                                <div class="d-flex align-items-center mb-3 pb-3 border-bottom">
+                                    <div class="order-item-qty bg-orange text-white rounded-circle d-flex align-items-center justify-content-center me-3">
+                                        @item.Quantity
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <h6 class="fw-bold mb-0">@item.Name</h6>
+                                        <small class="text-muted">@item.Price.ToString("N0")đ / món</small>
+                                    </div>
+                                    <span class="fw-bold">@item.Total.ToString("N0")đ</span>
+                                </div>
+                            }
+                        </div>
+
+                        <div class="bg-light rounded-3 p-3 mb-3">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="text-muted">Tạm tính (@Model.Sum(i => i.Quantity) món):</span>
+                                <span class="fw-bold">@Model.Sum(x => x.Total).ToString("N0")đ</span>
+                            </div>
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="text-muted">Phí giao hàng:</span>
+                                <span class="text-success fw-bold">Miễn phí</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <span class="text-muted">Giảm giá:</span>
+                                <span class="text-danger fw-bold">0đ</span>
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-center mb-4 pt-2">
+                            <h5 class="fw-bold mb-0">Tổng thanh toán:</h5>
+                            <h4 class="text-orange fw-bold mb-0">@Model.Sum(x => x.Total).ToString("N0")đ</h4>
+                        </div>
+
+                        <button type="button" onclick="handlePlaceOrder()" class="btn btn-orange btn-lg w-100 rounded-pill fw-bold shadow-orange py-3" id="btnPlaceOrder">
+                            <i class="fas fa-lock me-2"></i>ĐẶT HÀNG
+                        </button>
+
+                        <div class="text-center mt-3">
+                            <small class="text-muted"><i class="fas fa-shield-alt me-1"></i> Thông tin được bảo mật tuyệt đối</small>
+                        </div>
+
+                        <div class="d-flex justify-content-center gap-3 mt-3">
+                            <img src="https://vinadesign.vn/uploads/images/2023/05/vnpay-logo-vinadesign-25-12-57-55.jpg" height="20" class="opacity-50">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/1200px-PayPal.svg.png" height="15" class="opacity-50">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- QR Payment Modal -->
+<div class="modal fade" id="qrModal" tabindex="-1" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 rounded-4 shadow-lg">
+            <div class="modal-body p-0">
+                <div class="qr-header text-center text-white p-4" id="qrHeader">
+                    <i class="fas fa-qrcode fs-1 mb-2"></i>
+                    <h5 class="fw-bold mb-0" id="qrTitle">Quét mã để thanh toán</h5>
+                </div>
+                <div class="text-center p-4">
+                    <div class="qr-wrapper mx-auto mb-3">
+                        <div id="qrcode" class="d-flex justify-content-center"></div>
+                    </div>
+                    <div class="bg-light rounded-3 p-3 mb-3 text-start" id="bankInfo">
+                        <div class="row g-2">
+                            <div class="col-5 text-muted small">Ngân hàng:</div>
+                            <div class="col-7 fw-bold small">VietcomBank (VCB)</div>
+                            <div class="col-5 text-muted small">Số TK:</div>
+                            <div class="col-7 fw-bold small">1234 5678 9012</div>
+                            <div class="col-5 text-muted small">Chủ TK:</div>
+                            <div class="col-7 fw-bold small">FASTBITE FOOD JSC</div>
+                            <div class="col-5 text-muted small">Số tiền:</div>
+                            <div class="col-7 fw-bold small text-orange">@Model.Sum(x => x.Total).ToString("N0")đ</div>
+                            <div class="col-5 text-muted small">Nội dung CK:</div>
+                            <div class="col-7 fw-bold small text-primary" id="transferNote">FB_DH_001</div>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-center gap-2 mb-3">
+                        <div class="spinner-border spinner-border-sm text-orange" role="status"></div>
+                        <span class="text-muted">Chờ xác nhận thanh toán... <strong class="text-orange" id="qrCountdown">05:00</strong></span>
+                    </div>
+                    <button type="button" class="btn btn-orange btn-lg w-100 rounded-pill fw-bold py-3" onclick="confirmQrPayment()">
+                        <i class="fas fa-check-circle me-2"></i>TÔI ĐÃ THANH TOÁN
+                    </button>
+                    <button type="button" class="btn btn-link text-muted mt-2" data-bs-dismiss="modal">Hủy và chọn phương thức khác</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script>
+        let qrGenerated = false;
+        let countdownInterval = null;
+
+        function selectPayment(type) {
+            document.querySelectorAll('.payment-option').forEach(o => o.classList.remove('active'));
+            document.getElementById('opt-' + type).classList.add('active');
+        }
+
+        function getSelectedPayment() {
+            const checked = document.querySelector('input[name="paymentMethod"]:checked');
+            return checked ? checked.value : 'COD';
+        }
+
+        function handlePlaceOrder() {
+            // Validate form
+            const form = document.getElementById('checkoutForm');
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+
+            const method = getSelectedPayment();
+            if (method === 'COD') {
+                form.submit();
+            } else {
+                showQrModal(method);
+            }
+        }
+
+        function showQrModal(method) {
+            const header = document.getElementById('qrHeader');
+            const title = document.getElementById('qrTitle');
+            const bankInfo = document.getElementById('bankInfo');
+            const total = '@Model.Sum(x => x.Total).ToString("N0")';
+            const orderId = 'FB_DH_' + Date.now().toString().slice(-6);
+
+            document.getElementById('transferNote').textContent = orderId;
+
+            if (method === 'MoMo') {
+                header.style.background = 'linear-gradient(135deg, #a50064, #d82d8b)';
+                title.textContent = 'Quét mã MoMo để thanh toán';
+                bankInfo.querySelector('.col-7.fw-bold.small').textContent = 'Ví MoMo';
+                bankInfo.querySelectorAll('.col-7.fw-bold.small')[1].textContent = '0901 234 567';
+                bankInfo.querySelectorAll('.col-7.fw-bold.small')[2].textContent = 'FASTBITE FOOD';
+            } else {
+                header.style.background = 'linear-gradient(135deg, #0d6efd, #0dcaf0)';
+                title.textContent = 'Quét mã chuyển khoản ngân hàng';
+            }
+
+            // Generate QR
+            const qrDiv = document.getElementById('qrcode');
+            qrDiv.innerHTML = '';
+            const qrData = method === 'MoMo'
+                ? 'momo://pay?phone=0901234567&amount=' + total.replace(/\./g,'') + '&note=' + orderId
+                : 'https://img.vietqr.io/image/VCB-1234567890-compact.jpg?amount=' + total.replace(/\./g,'') + '&addInfo=' + orderId;
+
+            new QRCode(qrDiv, {
+                text: qrData,
+                width: 200,
+                height: 200,
+                colorDark: method === 'MoMo' ? '#a50064' : '#0d6efd',
+                colorLight: '#ffffff',
+                correctLevel: QRCode.CorrectLevel.H
+            });
+
+            // Start countdown
+            startCountdown(300);
+
+            // Show modal
+            new bootstrap.Modal(document.getElementById('qrModal')).show();
+        }
+
+        function startCountdown(seconds) {
+            if (countdownInterval) clearInterval(countdownInterval);
+            let remaining = seconds;
+            const el = document.getElementById('qrCountdown');
+            countdownInterval = setInterval(() => {
+                remaining--;
+                const m = Math.floor(remaining / 60);
+                const s = remaining % 60;
+                el.textContent = String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
+                if (remaining <= 0) {
+                    clearInterval(countdownInterval);
+                    el.textContent = 'Hết thời gian!';
+                }
+            }, 1000);
+        }
+
+        function confirmQrPayment() {
+            if (countdownInterval) clearInterval(countdownInterval);
+            document.getElementById('checkoutForm').submit();
+        }
+    </script>
+}
+
+<style>
+    :root { --primary-orange: #ff5e00; }
+    .text-orange { color: var(--primary-orange); }
+    .bg-orange { background-color: var(--primary-orange); }
+    .bg-soft-orange { background-color: rgba(255, 94, 0, 0.1); }
+    .btn-orange { background-color: var(--primary-orange); color: white; border: none; transition: all 0.3s; }
+    .btn-orange:hover { background-color: #e65500; color: white; transform: translateY(-2px); }
+    .shadow-orange { box-shadow: 0 10px 25px rgba(255, 94, 0, 0.3); }
+    .rounded-4 { border-radius: 1rem; }
+    .form-control:focus { border-color: var(--primary-orange); box-shadow: 0 0 0 0.2rem rgba(255, 94, 0, 0.15); }
+
+    /* Checkout Steps */
+    .checkout-steps { align-items: center; }
+    .step {
+        display: flex; flex-direction: column; align-items: center; gap: 5px;
+    }
+    .step-num {
+        width: 40px; height: 40px; border-radius: 50%;
+        background: #e9ecef; color: #999;
+        display: flex; align-items: center; justify-content: center;
+        font-weight: 700; font-size: 1rem; transition: all 0.3s;
+    }
+    .step.active .step-num { background: var(--primary-orange); color: white; box-shadow: 0 5px 15px rgba(255,94,0,0.3); }
+    .step.completed .step-num { background: #28a745; color: white; }
+    .step-text { font-size: 0.8rem; font-weight: 600; color: #999; }
+    .step.active .step-text { color: var(--primary-orange); }
+    .step.completed .step-text { color: #28a745; }
+    .step-line { width: 80px; height: 3px; background: #e9ecef; margin: 0 5px; margin-bottom: 20px; }
+    .step-line.completed { background: #28a745; }
+
+    /* Payment Options */
+    .payment-option {
+        display: block; padding: 16px; border: 2px solid #e9ecef;
+        border-radius: 12px; cursor: pointer; transition: all 0.3s;
+        margin-bottom: 12px;
+    }
+    .payment-option:hover { border-color: #ccc; }
+    .payment-option.active { border-color: var(--primary-orange); background: rgba(255, 94, 0, 0.03); }
+    .payment-option .check-icon { display: none; }
+    .payment-option.active .check-icon { display: block; }
+    .payment-icon {
+        width: 48px; height: 48px; border-radius: 12px;
+        display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
+    }
+    .bg-soft-green { background: rgba(40,167,69,0.1); }
+    .bg-soft-blue { background: rgba(13,110,253,0.1); }
+    .bg-soft-pink { background: rgba(220,53,69,0.1); }
+
+    /* Order Item */
+    .order-item-qty {
+        width: 32px; height: 32px; min-width: 32px;
+        font-size: 0.85rem; font-weight: 700;
+    }
+
+    /* QR Modal */
+    .qr-header {
+        background: linear-gradient(135deg, #0d6efd, #0dcaf0);
+        border-radius: 1rem 1rem 0 0;
+    }
+    .qr-wrapper {
+        background: white;
+        border: 3px dashed #dee2e6;
+        border-radius: 16px;
+        padding: 20px;
+        width: fit-content;
+    }
+    #qrModal .modal-content { overflow: hidden; }
+</style>

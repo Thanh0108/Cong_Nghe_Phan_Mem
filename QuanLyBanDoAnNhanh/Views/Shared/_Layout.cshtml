@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - FastBite</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-orange: #ff5e00;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        main {
+            flex: 1;
+        }
+        .text-orange { color: var(--primary-orange) !important; }
+        .bg-orange { background-color: var(--primary-orange) !important; }
+        .btn-orange { background-color: var(--primary-orange); color: white; border: none; }
+        .btn-orange:hover { background-color: #e65500; color: white; }
+        .border-orange { border-color: var(--primary-orange) !important; }
+        .nav-link:hover, .nav-link.active { color: var(--primary-orange) !important; }
+        .footer-links a:hover { color: var(--primary-orange) !important; padding-left: 5px; transition: 0.3s; }
+        .grayscale { filter: grayscale(100%); transition: 0.3s; }
+        .grayscale:hover { filter: grayscale(0%); }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="top-header py-2 bg-light border-bottom d-none d-lg-block">
+            <div class="container d-flex justify-content-between align-items-center">
+                <div class="contact-info">
+                    <small class="me-3"><i class="fas fa-envelope text-orange me-1"></i> contact@fastbite.com</small>
+                    <small><i class="fas fa-truck text-orange me-1"></i> Miễn phí giao hàng đơn từ 350k</small>
+                </div>
+                <div class="social-links">
+                    <a href="#" class="text-muted me-2"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="text-muted me-2"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-muted"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center" asp-controller="Home" asp-action="Index">
+                    <i class="fas fa-utensils text-white bg-orange p-2 rounded-circle me-2"></i>
+                    <span class="fw-bold fs-4 text-dark">Fast<span class="text-orange">Bite</span></span>
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarContent">
+                    <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link fw-semibold" asp-controller="Home" asp-action="Index">TRANG CHỦ</a></li>
+                        <li class="nav-item"><a class="nav-link fw-semibold" asp-controller="Home" asp-action="Menu">THỰC ĐƠN</a></li>
+                        <li class="nav-item"><a class="nav-link fw-semibold" asp-controller="Home" asp-action="Contact">LIÊN HỆ</a></li>
+                    </ul>
+
+                    <div class="d-flex align-items-center">
+                        <form asp-controller="Home" asp-action="Index" method="get" class="me-3 d-none d-md-block">
+                            <div class="input-group input-group-sm">
+                                <input type="text" name="searchTerm" class="form-control border-orange" placeholder="Tìm món...">
+                                <button class="btn btn-orange" type="submit"><i class="fas fa-search"></i></button>
+                            </div>
+                        </form>
+
+                        <a asp-controller="Cart" asp-action="Index" class="position-relative me-3 text-dark text-decoration-none">
+                            <i class="fas fa-shopping-basket fs-5"></i>
+                            @{
+                                var cart = Context.Session.GetObjectFromJson<List<CartItem>>("Cart");
+                                var count = cart?.Sum(i => i.Quantity) ?? 0;
+                            }
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-orange">@count</span>
+                        </a>
+
+                        @if (Context.Session.GetString("UserName") != null) {
+                            <div class="dropdown">
+                                <a class="btn btn-orange btn-sm fw-bold px-3 rounded-pill dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                                    <i class="fas fa-user-circle me-1"></i> @Context.Session.GetString("UserName")
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end shadow border-0">
+                                    <li><a class="dropdown-item" asp-controller="Account" asp-action="Profile"><i class="fas fa-id-card text-orange me-2"></i> Tài khoản</a></li>
+                                    @if (Context.Session.GetString("UserRole") == "Admin") {
+                                        <li><a class="dropdown-item" asp-controller="Admin" asp-action="Index"><i class="fas fa-user-shield text-primary me-2"></i> Admin</a></li>
+                                    }
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item text-danger" asp-controller="Account" asp-action="Logout"><i class="fas fa-sign-out-alt me-2"></i> Đăng xuất</a></li>
+                                </ul>
+                            </div>
+                        } else {
+                            <div class="dropdown">
+                                <a class="btn btn-outline-dark btn-sm fw-bold px-3 rounded-pill dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                                    <i class="fas fa-user-circle me-1"></i> TÀI KHOẢN
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end shadow border-0">
+                                    <li><a class="dropdown-item" asp-controller="Account" asp-action="Login"><i class="fas fa-sign-in-alt text-orange me-2"></i> Đăng nhập</a></li>
+                                    <li><a class="dropdown-item" asp-controller="Account" asp-action="Register"><i class="fas fa-user-plus text-orange me-2"></i> Đăng ký</a></li>
+                                </ul>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main role="main">
+        @RenderBody()
+    </main>
+
+    <footer class="footer bg-dark text-white pt-5 pb-3 mt-auto">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h4 class="fw-bold mb-3">Fast<span class="text-orange">Bite</span></h4>
+                    <p class="text-muted small">Trải nghiệm ẩm thực nhanh gọn, ngon miệng và an toàn. Mỗi bữa ăn đều là một niềm vui.</p>
+                    <div class="social-links mt-4">
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4">
+                    <h5 class="fw-bold mb-4">Khám Phá</h5>
+                    <ul class="list-unstyled footer-links">
+                        <li><a asp-controller="Home" asp-action="Index" class="text-muted text-decoration-none">Trang chủ</a></li>
+                        <li><a asp-controller="Home" asp-action="Menu" class="text-muted text-decoration-none">Thực đơn</a></li>
+                        <li><a asp-controller="Home" asp-action="Contact" class="text-muted text-decoration-none">Liên hệ</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4">
+                    <h5 class="fw-bold mb-4">Chính Sách</h5>
+                    <ul class="list-unstyled footer-links">
+                        <li><a href="#" class="text-muted text-decoration-none">Giao hàng</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none">Bảo mật</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none">Điều khoản</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-4 mb-4">
+                    <h5 class="fw-bold mb-4">Liên Hệ</h5>
+                    <ul class="list-unstyled text-muted small">
+                        <li class="mb-2"><i class="fas fa-map-marker-alt text-orange me-2"></i> 123 Đường FastFood, Quận 1, TP. HCM</li>
+                        <li class="mb-2"><i class="fas fa-phone-alt text-orange me-2"></i> 1900 1234 / (028) 3838 3838</li>
+                        <li><i class="fas fa-envelope text-orange me-2"></i> contact@fastbite.com</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="border-secondary my-4">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start">
+                    <span class="text-muted small">&copy; 2026 - FastBite - All Rights Reserved</span>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <img src="https://vinadesign.vn/uploads/images/2023/05/vnpay-logo-vinadesign-25-12-57-55.jpg" alt="Payment" height="25" class="me-3 grayscale">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/1200px-PayPal.svg.png" alt="Payment" height="15" class="grayscale">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

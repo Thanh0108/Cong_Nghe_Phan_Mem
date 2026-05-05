@@ -1,0 +1,231 @@
+@{
+    ViewData["Title"] = "Liên hệ với FastBite";
+}
+
+<!-- Hero Section -->
+<div class="contact-hero bg-orange text-white py-5 position-relative overflow-hidden mb-5">
+    <div class="container position-relative z-index-2 py-4">
+        <div class="row align-items-center justify-content-center text-center">
+            <div class="col-lg-8 animate-fadein">
+                <h1 class="display-4 fw-bold mb-3">Liên Hệ Với <span class="text-warning">FastBite</span></h1>
+                <p class="lead mb-0 opacity-75">Chúng tôi luôn sẵn sàng lắng nghe, giải đáp thắc mắc và mang đến trải nghiệm tuyệt vời nhất cho bạn.</p>
+            </div>
+        </div>
+    </div>
+    <!-- Decorative shapes -->
+    <div class="hero-shape-contact"></div>
+</div>
+
+<div class="container pb-5">
+    <!-- Contact Info Cards -->
+    <div class="row g-4 mb-5" style="margin-top: -80px; position: relative; z-index: 10;">
+        <div class="col-lg-4">
+            <div class="card border-0 shadow-sm rounded-4 p-4 h-100 text-center contact-card animate-zoomin" style="animation-delay: 0.1s;">
+                <div class="icon-circle bg-soft-orange text-orange mx-auto mb-4">
+                    <i class="fas fa-map-marker-alt fa-2x"></i>
+                </div>
+                <h5 class="fw-bold mb-3">Trụ Sở Chính</h5>
+                <p class="text-muted mb-0">123 Đường FastFood<br>Phường Bến Nghé, Quận 1<br>TP. Hồ Chí Minh</p>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="card border-0 shadow-sm rounded-4 p-4 h-100 text-center contact-card animate-zoomin" style="animation-delay: 0.2s;">
+                <div class="icon-circle bg-soft-orange text-orange mx-auto mb-4">
+                    <i class="fas fa-phone-alt fa-2x"></i>
+                </div>
+                <h5 class="fw-bold mb-3">Điện Thoại</h5>
+                <p class="text-muted mb-0">Hotline đặt hàng: <strong class="text-dark">1900 1234</strong><br>Chăm sóc KH: <strong class="text-dark">(028) 3838 3838</strong><br>Zalo: <strong class="text-dark">0901 234 567</strong></p>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="card border-0 shadow-sm rounded-4 p-4 h-100 text-center contact-card animate-zoomin" style="animation-delay: 0.3s;">
+                <div class="icon-circle bg-soft-orange text-orange mx-auto mb-4">
+                    <i class="fas fa-envelope fa-2x"></i>
+                </div>
+                <h5 class="fw-bold mb-3">Email Trực Tuyến</h5>
+                <p class="text-muted mb-0">Hỗ trợ chung:<br><a href="mailto:contact@fastbite.com" class="text-decoration-none text-orange fw-bold">contact@fastbite.com</a><br>Góp ý dịch vụ:<br><a href="mailto:feedback@fastbite.com" class="text-decoration-none text-dark">feedback@fastbite.com</a></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-5">
+        <!-- Contact Form -->
+        <div class="col-lg-7">
+            <div class="card border-0 shadow-sm rounded-4 p-4 p-md-5 h-100">
+                <div class="mb-4">
+                    <span class="badge bg-soft-orange text-orange px-3 py-2 rounded-pill mb-2">Gửi tin nhắn</span>
+                    <h3 class="fw-bold">Bạn Cần Hỗ Trợ?</h3>
+                    <p class="text-muted">Hãy để lại thông tin và lời nhắn, chúng tôi sẽ phản hồi lại trong vòng 24h làm việc.</p>
+                </div>
+                
+                <form id="contactForm">
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold text-muted">HỌ VÀ TÊN <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control rounded-3 py-2 bg-light border-0" id="contactName" placeholder="Nhập họ tên của bạn" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold text-muted">SỐ ĐIỆN THOẠI <span class="text-danger">*</span></label>
+                            <input type="tel" class="form-control rounded-3 py-2 bg-light border-0" id="contactPhone" placeholder="Nhập số điện thoại" required>
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label small fw-bold text-muted">EMAIL</label>
+                            <input type="email" class="form-control rounded-3 py-2 bg-light border-0" id="contactEmail" placeholder="Nhập địa chỉ email">
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label small fw-bold text-muted">CHỦ ĐỀ <span class="text-danger">*</span></label>
+                            <select class="form-select rounded-3 py-2 bg-light border-0" id="contactSubject" required>
+                                <option value="" disabled selected>Chọn vấn đề bạn cần hỗ trợ</option>
+                                <option value="Góp ý món ăn">Góp ý chất lượng món ăn</option>
+                                <option value="Thái độ phục vụ">Thái độ nhân viên giao hàng</option>
+                                <option value="Hợp tác">Liên hệ hợp tác kinh doanh</option>
+                                <option value="Khác">Vấn đề khác</option>
+                            </select>
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label small fw-bold text-muted">NỘI DUNG <span class="text-danger">*</span></label>
+                            <textarea class="form-control rounded-3 py-2 bg-light border-0" id="contactMessage" rows="5" placeholder="Mô tả chi tiết vấn đề của bạn..." required></textarea>
+                        </div>
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-orange btn-lg w-100 rounded-pill fw-bold py-3 shadow-orange" id="btnSubmitContact">
+                                <i class="fas fa-paper-plane me-2"></i>GỬI TIN NHẮN
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- Success Message Alert (Hidden by default) -->
+                <div class="alert alert-success mt-4 d-none" id="contactSuccessAlert" role="alert">
+                    <i class="fas fa-check-circle me-2"></i>Cảm ơn bạn! Tin nhắn đã được gửi thành công.
+                </div>
+            </div>
+        </div>
+
+        <!-- Working Hours & Map -->
+        <div class="col-lg-5">
+            <!-- Working Hours -->
+            <div class="card border-0 shadow-sm rounded-4 p-4 mb-4 bg-dark text-white">
+                <h4 class="fw-bold mb-4"><i class="far fa-clock text-orange me-2"></i>Giờ Mở Cửa</h4>
+                <div class="d-flex justify-content-between border-bottom border-secondary pb-3 mb-3">
+                    <span>Thứ 2 - Thứ 6</span>
+                    <span class="fw-bold text-orange">08:00 - 22:00</span>
+                </div>
+                <div class="d-flex justify-content-between border-bottom border-secondary pb-3 mb-3">
+                    <span>Thứ 7 - Chủ Nhật</span>
+                    <span class="fw-bold text-orange">09:00 - 23:00</span>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <span>Ngày Lễ / Tết</span>
+                    <span class="fw-bold text-warning">Mở cửa bình thường</span>
+                </div>
+            </div>
+
+            <!-- Map -->
+            <div class="card border-0 shadow-sm rounded-4 overflow-hidden h-100" style="min-height: 350px;">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m12!1m3!1d3919.4602324283403!2d106.66521377488258!3d10.771412989377422!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f20387532df%3A0x77c223c090333d4e!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBCw6FjaCBLaG9hIFRQLkhDTQ!5e0!3m2!1svi!2s!4v1700000000000!5m2!1svi!2s" 
+                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Lấy button và thêm hiệu ứng loading
+            const btn = document.getElementById('btnSubmitContact');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Đang gửi...';
+            btn.disabled = true;
+
+            // Giả lập gửi API mất 1.5s
+            setTimeout(() => {
+                // Reset form
+                this.reset();
+                
+                // Trả lại trạng thái button
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+
+                // Hiện thông báo thành công
+                const alert = document.getElementById('contactSuccessAlert');
+                alert.classList.remove('d-none');
+                alert.classList.add('animate-fadein');
+                
+                // Tự động ẩn sau 5s
+                setTimeout(() => {
+                    alert.classList.add('d-none');
+                }, 5000);
+            }, 1500);
+        });
+    </script>
+}
+
+<style>
+    :root { --primary-orange: #ff5e00; }
+    
+    .bg-orange { background: linear-gradient(135deg, #ff5e00, #ff8c42); }
+    .text-orange { color: var(--primary-orange); }
+    .bg-soft-orange { background-color: rgba(255, 94, 0, 0.1); }
+    
+    .rounded-4 { border-radius: 1.25rem; }
+    
+    .btn-orange { background-color: var(--primary-orange); color: white; border: none; transition: all 0.3s ease; }
+    .btn-orange:hover { background-color: #e65500; color: white; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(255,94,0,0.3) !important; }
+    .shadow-orange { box-shadow: 0 5px 15px rgba(255, 94, 0, 0.2); }
+    
+    .form-control:focus, .form-select:focus { 
+        border: 2px solid var(--primary-orange) !important; 
+        box-shadow: none; 
+        background-color: white !important;
+    }
+
+    /* Icon circle */
+    .icon-circle { 
+        width: 80px; height: 80px; 
+        border-radius: 50%; 
+        display: flex; align-items: center; justify-content: center; 
+        transition: all 0.3s ease;
+    }
+
+    /* Contact Card Animation */
+    .contact-card {
+        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .contact-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 35px rgba(0,0,0,0.1) !important;
+    }
+    .contact-card:hover .icon-circle {
+        background: linear-gradient(135deg, #ff5e00, #ff8c42);
+        color: white !important;
+        transform: scale(1.1) rotate(10deg);
+    }
+
+    /* Animations */
+    .animate-fadein { animation: fadeIn 0.8s ease forwards; }
+    .animate-zoomin { animation: zoomIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; opacity: 0; }
+    
+    @@keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    @@keyframes zoomIn {
+        from { opacity: 0; transform: scale(0.9); }
+        to { opacity: 1; transform: scale(1); }
+    }
+
+    /* Hero Shapes */
+    .hero-shape-contact {
+        position: absolute;
+        bottom: -50px;
+        left: 0;
+        width: 100%;
+        height: 100px;
+        background: #fff;
+        border-radius: 50% 50% 0 0;
+        z-index: 1;
+    }
+</style>
